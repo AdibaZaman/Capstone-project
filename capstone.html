@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Shopping</title>
+</head>
+<body>
+
+<h1 style = "color: lightblue; text-align: center;">Shopping Mart</h1>
+
+<div style="text-align: center;">
+  <img src="shop.jpeg" width="700" height="500">
+</div>
+
+<p>Welcome to our online shopping website where you can explore different products and enjoy special discount offers.</p>
+
+<h3>Categories</h3>
+<p>
+<a href="#clothes">Clothes</a><br>
+<a href="#shoes">Shoes</a><br>
+<a href="#bags">Bags</a><br>
+<a href="#makeup">Make-up</a><br>
+<a href="#jewellery">Jewellery</a>
+</p>
+
+<div id="clothes" style="text-align: center;">
+  <h3 style = "color: lightblue;">Clothes</h3>
+  <img src="cl.jpg" width="400" height="300">
+  <p>Explore our latest collection of stylish and comfortable clothes for every occasion. Dress smart, look great!</p>
+  <p>Price:$400</p>
+</div>
+
+<div id="bags" style="text-align: center;">
+  <h3 style = "color: lightblue;">Bags</h3>
+  <img src="Bags.jpg" width="400" height="300">
+  <p>Find the perfect bag for work, or travel. Stylish, strong, and practical for every day.</p>
+  <p>Price:$300</p>
+</div>
+
+<div id="shoes" style="text-align: center;">
+  <h3 style = "color: lightblue;">Shoes</h3>
+  <img src="shoes.jpg" width="400" height="300">
+  <p>Step into style with our collection of shoes for men and women. Perfect for work, sports, or casual wear.</p>
+  <p>Price:$350</p>
+</div>
+
+<div id="makeup" style="text-align: center;">
+  <h3 style = "color: lightblue;">Make-up</h3>
+  <img src="makeup.jpg" width="400" height="300">
+  <p>Discover our makeup collection for a flawless look. From lipsticks to foundation, we have everything you need.</p>
+  <p>Price:$200</p>
+</div>
+
+<div id="jewellery" style="text-align: center;">
+  <h3 style = "color: lightblue;">Jewellery</h3>
+  <img src="jy.webp" width="400" height="300">
+  <p>Add sparkle to your style with our collection of rings, necklaces, and bracelets. Perfect for gifts or special occasions.</p>
+  <p>Price:$500</p>
+</div>
+<center>
+<h3>Enter Your Details</h3>
+
+<div style="border:1px solid black; width:400px; padding:15px;">
+
+Name: <input type="text" id="name"><br><br>
+
+Clothes Qty: <input type="number" id="q1" value="0"><br><br>
+Bags Qty: <input type="number" id="q2" value="0"><br><br>
+Shoes Qty: <input type="number" id="q3" value="0"><br><br>
+Makeup Qty: <input type="number" id="q4" value="0"><br><br>
+Jewellery Qty: <input type="number" id="q5" value="0"><br><br>
+
+<button onclick="calculate()">Calculate Bill</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+<script>
+function calculate(){
+
+let name = document.getElementById("name").value;
+
+let q1 = Number(document.getElementById("q1").value);
+let q2 = Number(document.getElementById("q2").value);
+let q3 = Number(document.getElementById("q3").value);
+let q4 = Number(document.getElementById("q4").value);
+let q5 = Number(document.getElementById("q5").value);
+
+let p1 = 400;
+let p2 = 300;
+let p3 = 350;
+let p4 = 200;
+let p5 = 500;
+
+let total = (q1*p1) + (q2*p2) + (q3*p3) + (q4*p4) + (q5*p5);
+let items = q1 + q2 + q3 + q4 + q5;
+
+let discount = 0;
+
+if(items >= 2){
+    discount = total * 0.10;
+}
+
+let final = total - discount;
+
+let budget = prompt("Enter your budget (optional):");
+let message = "Not given";
+
+if(budget !== null && budget.trim() !== "" && !isNaN(budget)){
+    budget = Number(budget);
+
+    if(final <= budget){
+        message = "Within Budget";
+    } else {
+        message = "Over Budget!";
+    }
+}
+
+document.getElementById("result").innerHTML =
+"Customer: " + name + "<br>" +
+"Total Items: " + items + "<br>" +
+"Total Cost: $" + total + "<br>" +
+"Discount: $" + discount + "<br>" +
+"Final Bill: $" + final + "<br>" +
+"Budget Status: " + message;
+
+}
+</script>
+</center>
+</body>
+</html>
